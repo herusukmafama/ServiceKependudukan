@@ -1,0 +1,21 @@
+{
+    "api_output_ok": "Success",
+    "api_output_no_output": "No Output",
+    "api_output_not_ok": "Error/Failed",
+    "process_success": "Processed",
+    "process_not_success": "Not Processed",
+    "save_success": "Saved",
+    "save_not_success": "Not Saved",
+    "delete_success": "Deleted",
+    "delete_not_success": "Not Deleted",
+    "update_success": "Updated",
+    "update_not_success": "Not Updated",
+    "output_field_exists": "Output Field Already Exists",
+    "output_field_not_exists": "Output Field Not Exists",
+    "customer_info_not_found": "Customer Info Not Found",
+    "Not Pass": "Condition Not Passed",
+    "api_output_no_product": "No Product Eligible",
+    "product_not_eligible": "Tidak ada Product yang sesuai",
+    "process_pending": "Pending",
+    "get_success": "Get Data Success"
+}
