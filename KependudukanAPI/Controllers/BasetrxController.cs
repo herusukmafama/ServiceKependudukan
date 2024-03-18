@@ -51,5 +51,34 @@ namespace KependudukanAPI.Controllers
             NpgsqlConnection.ClearPool(connection);
             return strout;
         }
+
+        public string DeleteDataWarga(JObject json)
+        {
+            string strout = "";
+            JObject jo = new JObject();
+            var conn = dbconn.conString();
+            NpgsqlTransaction trans;
+            NpgsqlConnection connection = new NpgsqlConnection(conn);
+            connection.Open();
+            trans = connection.BeginTransaction();
+            try
+            {
+                NpgsqlCommand cmd = new NpgsqlCommand("public.delete_data_warga", connection, trans);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("p_dw_id", Convert.ToInt32(json.GetValue("dw_id").ToString()));
+                cmd.ExecuteNonQuery();
+
+                trans.Commit();
+                strout = "success";
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                strout = ex.Message;
+            }
+            connection.Close();
+            NpgsqlConnection.ClearPool(connection);
+            return strout;
+        }
     }
 }

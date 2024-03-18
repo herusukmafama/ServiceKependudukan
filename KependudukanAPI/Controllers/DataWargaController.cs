@@ -88,6 +88,38 @@ namespace KependudukanAPI.Controllers
             return StatusCode(code, data);
         }
 
+        // DELETE
+
+        [HttpPost("delete")]
+        public IActionResult Delete([FromBody] JObject json)
+        {
+            var data = new JObject();
+            int code = 200;
+            try
+            {
+                string strout = "";
+                strout = bcx.DeleteDataWarga(json);
+                if (strout == "success")
+                {
+                    data.Add("status", mc.GetMessage("api_output_ok"));
+                    data.Add("message", mc.GetMessage("save_success"));
+                }
+                else
+                {
+                    data.Add("status", mc.GetMessage("api_output_not_ok"));
+                    data.Add("message", strout);
+                }
+            }
+            catch (Exception ex)
+            {
+                code = 500;
+                data.Add("status", mc.GetMessage("api_output_not_ok"));
+                data.Add("message", ex.Message);
+            }
+
+            return StatusCode(code, data);
+        }
+
         public List<dynamic> checkListData(string id)
         {
             string spname = "public.get_list_data_warga";
